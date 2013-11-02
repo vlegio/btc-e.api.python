@@ -21,7 +21,7 @@ class api:
   self.__api_secret = api_secret
 
  def __nonce(self):
-   self.__nonce_v += 1
+   self.__nonce_v = str(time.time()).split('.')[0]
 
  def __signature(self, params):
   return hmac.new(self.__api_secret, params, digestmod=hashlib.sha512).hexdigest()
