@@ -15,12 +15,15 @@ class api:
  __api_key	= '';
  __api_secret	= '';
  __nonce_v	= 1;
+ __wait_for_nonce = False
 
- def __init__(self,api_key,api_secret):
+ def __init__(self,api_key,api_secret,wait_for_nonce=False):
   self.__api_key = api_key
   self.__api_secret = api_secret
+  self.__wait_for_nonce = wait_for_nonce
 
  def __nonce(self):
+   if self.__wait_for_nonce: time.sleep(1)
    self.__nonce_v = str(time.time()).split('.')[0]
 
  def __signature(self, params):
