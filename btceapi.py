@@ -64,7 +64,7 @@ class api:
    "order"	: torder,
    "since"	: tsince,
    "end"	: tend}
-  return self.__api_cal('TransHistory', params)
+  return self.__api__call('TransHistory', params)
  
  def TradeHistory(self, tfrom, tcount, tfrom_id, tend_id, torder, tsince, tend, tpair):
   params = {
