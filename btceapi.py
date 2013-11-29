@@ -90,3 +90,6 @@ class api:
    "amount"	: tamount}
   return self.__api_call('Trade', params)
   
+ def CancelOrder(self, torder_id):
+  params = { "order_id" : torder_id }
+  return self.__api_call('CancelOrder', params)
