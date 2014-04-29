@@ -5,7 +5,7 @@
 ## BTC   :      1ipEA2fcVyjiUnBqUx7PVy5efktz2hucb
 ## donate free =)
 import http.client
-import urllib
+import urllib.request, urllib.parse, urllib.error
 import json
 import hashlib
 import hmac
@@ -27,7 +27,8 @@ class api:
    self.__nonce_v = str(time.time()).split('.')[0]
 
  def __signature(self, params):
-  return hmac.new(self.__api_secret, params, digestmod=hashlib.sha512).hexdigest()
+  sig = hmac.new(self.__api_secret.encode(), params.encode(), hashlib.sha512)
+  return sig.hexdigest()
 
  def __api_call(self,method,params):
   self.__nonce()
@@ -39,16 +40,16 @@ class api:
 		     "Sign" : self.__signature(params)}
   conn = http.client.HTTPSConnection("btc-e.com")
   conn.request("POST", "/tapi", params, headers)
-  response = conn.getresponse()
-  data = json.load(response)
+  response = conn.getresponse().read().decode()
+  data = json.loads(response)
   conn.close()
   return data
   
  def get_param(self, couple, param):
   conn = http.client.HTTPSConnection("btc-e.com")
   conn.request("GET", "/api/2/"+couple+"/"+param)
-  response = conn.getresponse()
-  data = json.load(response)
+  response = conn.getresponse().read().decode()
+  data = json.loads(response)
   conn.close()
   return data
  
