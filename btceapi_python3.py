@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 ## Author:      t0pep0
 ## e-mail:      t0pep0.gentoo@gmail.com
-## Jabber:      t0pep0@jabber.ru
-## BTC   :      1ipEA2fcVyjiUnBqUx7PVy5efktz2hucb
+## BTC   :      1Jsp4V9p3y5phhLZfa5VAXhk6adVD61ipb
 ## donate free =)
 import http.client
 import urllib.request, urllib.parse, urllib.error
